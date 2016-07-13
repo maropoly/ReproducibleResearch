@@ -12,6 +12,8 @@ setwd("C:/Users/mrith/Documents/ReproducableResearch")
 data <- read.csv("activity.csv")
 #install lattice package
 library(lattice)
+library(knitr)
+library(markdown)
 ```
 Create Histogram with Mean and Median values for number of steps
 ```{r}
