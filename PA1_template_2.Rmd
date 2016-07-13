@@ -1,10 +1,10 @@
 ---
-title: "PA1_template"
+title: "Reproducible Research: Peer Assessment 1"
 author: "Michael Rith"
 date: "July 12, 2016"
 output: 
-        md_document:
-        variant: markdown_github
+   html_document:
+    keep_md: true
 ---
 ```{r}
 setwd("C:/Users/mrith/Documents/ReproducableResearch")
