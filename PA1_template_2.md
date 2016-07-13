@@ -22,6 +22,7 @@ library(markdown)
 ```
 ## Warning: package 'markdown' was built under R version 3.2.5
 ```
+
 Create Histogram with Mean and Median values for number of steps
 
 ```r
@@ -30,14 +31,14 @@ steps_by_day <- aggregate(steps ~ date, data, sum)
 hist(steps_by_day$steps, main = paste("Total Steps Each Day"), col="blue", xlab="Number of Steps")
 ```
 
-![](PA1_template_2_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](Figs/unnamed-chunk-2-1.png)<!-- -->
 
 ```r
 rmean <- mean(steps_by_day$steps)
 rmedian <- median(steps_by_day$steps)
 ```
 
-The Mean is 10766 and the Median is 10765
+The Mean is 10766.19 and the Median is 10765
 
 #What is the average daily activity?
 
@@ -51,7 +52,7 @@ plot(steps_by_interval$interval,steps_by_interval$steps,
      main="Average # of Steps per Day by Interval")
 ```
 
-![](PA1_template_2_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Figs/unnamed-chunk-3-1.png)<!-- -->
 Remove all missing variables and imputed zeros
 
 ```r
@@ -69,7 +70,7 @@ hist(steps_by_day$steps, main = paste("Total Steps Each Day"), col="orange", xla
 legend("topright", c("Imputed", "Non-imputed"), col=c("green", "orange"), lwd=10)
 ```
 
-![](PA1_template_2_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Figs/unnamed-chunk-5-1.png)<!-- -->
 Calculate new mean and median for imputed data.
 
 
@@ -90,11 +91,11 @@ Calculate total difference.
 ```r
 total_diff <- sum(steps_by_day_i$steps) - sum(steps_by_day$steps)
 ```
-* The imputed data mean is 1.059 × $10^{4}$
-* The imputed data median is 1.0766 × $10^{4}$
-* The difference between the non-imputed mean and imputed mean is -176.4949
-* The difference between the non-imputed mean and imputed mean is 1.1887
-* The difference between total number of steps between imputed and non-imputed data is 7.5363 × $10^{4}$.Therefore, there were 7.5363 × $10^{4}$ more steps in the imputed data.
+* The imputed data mean is 10766.19
+* The imputed data median is 10766.19
+* The difference between the non-imputed mean and imputed mean is 0
+* The difference between the non-imputed median and imputed median is 1.188679
+* The difference of 86129.51 was the number of more steps in the imputed data.
 
 #Are there differences in activity patterns between weekdays and weekends?
 Want to create a plot to compare and contrast number of steps between the week and weekend. There is a higher peak earlier on weekdays, and more overall activity on weekends.
@@ -112,15 +113,8 @@ xyplot(steps_by_interval_i$steps ~ steps_by_interval_i$interval|steps_by_interva
        ylab="Steps",layout=c(1,2), type="l")
 ```
 
-![](PA1_template_2_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](Figs/unnamed-chunk-9-1.png)<!-- -->
 
 
-
-You can also embed plots, for example:
-
-![](PA1_template_2_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-* The imputed data mean is 0
-
