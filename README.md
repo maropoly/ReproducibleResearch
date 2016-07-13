@@ -1,11 +1,10 @@
-# ReproducibleResearch
 ---
-title: "PA1_template"
+title: "Reproducible Research: Peer Assessment 1"
 author: "Michael Rith"
 date: "July 12, 2016"
 output: 
-        md_document:
-        variant: markdown_github
+   html_document:
+    keep_md: true
 ---
 ```{r}
 setwd("C:/Users/mrith/Documents/ReproducableResearch")
@@ -16,6 +15,11 @@ library(lattice)
 library(knitr)
 library(markdown)
 ```
+```{r knitr_options , include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=4,
+fig.path='Figs/', warning=FALSE,
+message=FALSE)
+```
 Create Histogram with Mean and Median values for number of steps
 ```{r}
 #Sum steps by day, create Histogram, and calculate mean and median.
@@ -25,7 +29,7 @@ rmean <- mean(steps_by_day$steps)
 rmedian <- median(steps_by_day$steps)
 ```
 
-The Mean is 10766 and the Median is 10765
+The Mean is `r format(rmean, round=2)` and the Median is `r format(rmedian, round=2)`
 
 #What is the average daily activity?
 
@@ -36,6 +40,7 @@ plot(steps_by_interval$interval,steps_by_interval$steps,
      type="l", xlab="Interval",
      ylab="Number of Steps",
      main="Average # of Steps per Day by Interval")
+
 ```
 Remove all missing variables and imputed zeros
 ```{r}
@@ -74,11 +79,11 @@ Calculate total difference.
 total_diff <- sum(steps_by_day_i$steps) - sum(steps_by_day$steps)
 
 ```
-* The imputed data mean is 1.059 × $10^{4}$
-* The imputed data median is 1.0766 × $10^{4}$
-* The difference between the non-imputed mean and imputed mean is -176.4949
-* The difference between the non-imputed mean and imputed mean is 1.1887
-* The difference between total number of steps between imputed and non-imputed data is 7.5363 × $10^{4}$.Therefore, there were 7.5363 × $10^{4}$ more steps in the imputed data.
+* The imputed data mean is `r format(rmean.i, round=2)`
+* The imputed data median is `r format(rmedian.i, round=2)`
+* The difference between the non-imputed mean and imputed mean is `r format(mean_diff, round=2)`
+* The difference between the non-imputed median and imputed median is `r format(med_diff, round=2)`
+* The difference of `r format(total_diff, round=2)` was the number of more steps in the imputed data.
 
 #Are there differences in activity patterns between weekdays and weekends?
 Want to create a plot to compare and contrast number of steps between the week and weekend. There is a higher peak earlier on weekdays, and more overall activity on weekends.
@@ -98,13 +103,4 @@ xyplot(steps_by_interval_i$steps ~ steps_by_interval_i$interval|steps_by_interva
 
 
 
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-* The imputed data mean is `r mean_diff`
-
