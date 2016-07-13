@@ -6,6 +6,9 @@ output:
    html_document:
     keep_md: true
 ---
+##This is the Read Me Markdown.  The embeded Markdown with graphs can be seen on the PA1_template_2.md file.  
+
+
 ```{r}
 setwd("C:/Users/mrith/Documents/ReproducableResearch")
 #Open Data Set
